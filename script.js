@@ -40,6 +40,11 @@ const spreadsheetFunctions = {
     has2: (nums) => nums.includes(2),
     increment: (nums) => nums.map((num) => num + 1),
     random: (x, y) => Math.floor(Math.random() * y + x),
+    range: (x, y) => range(x, y),
+    nodupes: (nums) => nums.filter((num, index) => nums.indexOf(num) === index), // my solution
+    // alternatively:
+    // nodupes: (nums) => [...new Set(nums).values()] // fCC's solution
+    "": (arg) => (arg) // edge case for empty strings
 };
 
 const applyFunction = (str) => {
