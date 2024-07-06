@@ -12,7 +12,6 @@ const highPrecedence = (str) => {
     const str2 = infixEval(str, regex);
     return str2 === str ? str : highPrecedence(str2);
 };
-// console.log(highPrecedence("5*3"))
 
 const sum = (nums) => nums.reduce((acc, currVal) => acc + currVal, 0);
 const isEven = (num) => (num % 2 === 0 ? true : false);
@@ -30,6 +29,14 @@ const spreadsheetFunctions = {
     sum,
     average,
     median,
+};
+
+const applyFunction = (str) => {
+    const noHigh = highPrecedence(str);
+    const infix = /([\d.]+)([+-])([\d.]+)/g;
+    const str2 = infixEval(noHigh, infix);
+    const functionCall = /([a-z0-9]*)\(([0-9., ]*)\)(?!.*\()/i;
+    const toNumberList = (args) => args.split(",").map(parseFloat);
 };
 
 const range = (start, end) =>
